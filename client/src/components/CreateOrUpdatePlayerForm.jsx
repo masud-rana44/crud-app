@@ -50,11 +50,14 @@ export const CreateOrUpdatePlayerForm = ({ player = {} }) => {
       setIsLoading(true);
 
       if (!player?._id) {
-        await axios.post("http://localhost:5000/api/players", newPlayer);
+        await axios.post(
+          "https://crud-app-nine-pi.vercel.app/api/players",
+          newPlayer
+        );
         toast.success("Player successfully added");
       } else {
         await axios.patch(
-          `http://localhost:5000/api/players/${params.playerId}`,
+          `https://crud-app-nine-pi.vercel.app/api/players/${params.playerId}`,
           newPlayer
         );
         toast.success("Player successfully updated");

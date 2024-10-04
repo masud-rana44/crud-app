@@ -11,7 +11,9 @@ export const PlayerCards = ({ players }) => {
 
   const handleDelete = async (playerId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/players/${playerId}`);
+      await axios.delete(
+        `https://crud-app-nine-pi.vercel.app/api/players/${playerId}`
+      );
       toast.success("Player deleted successfully");
       navigate("/");
     } catch (error) {

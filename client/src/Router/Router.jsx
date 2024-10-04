@@ -24,7 +24,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: async () =>
-          await axios.get(`http://localhost:5000/api/players`),
+          await axios.get(`https://crud-app-nine-pi.vercel.app/api/players`),
       },
       {
         path: "/players/create",
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         ),
         loader: async ({ params }) =>
           await axios.get(
-            `http://localhost:5000/api/players/${params.playerId}`
+            `https://crud-app-nine-pi.vercel.app/api/players/${params.playerId}`
           ),
       },
       {

@@ -16,18 +16,30 @@ const MyCart = () => {
     const fetchItems = async () => {
       setIsLoading(true);
 
-      axios.get(`http://localhost:5000/api/carts/${user.uid}`).then((res) => {
-        const items = res?.data?.data;
-        const ids = items.map((item) => item.productId);
-        setItems([]);
-        if (!items.length) setIsLoading(false);
-        for (const id of ids) {
-          axios.get(`http://localhost:5000/api/products/${id}`).then((res) => {
-            setItems((items) => [...items, res?.data?.data]);
-            setIsLoading(false);
-          });
-        }
-      });
+      axios
+        .get(
+          `https://crud-app-nine-pi.vercel.app
+
+/api/carts/${user.uid}`
+        )
+        .then((res) => {
+          const items = res?.data?.data;
+          const ids = items.map((item) => item.productId);
+          setItems([]);
+          if (!items.length) setIsLoading(false);
+          for (const id of ids) {
+            axios
+              .get(
+                `https://crud-app-nine-pi.vercel.app
+
+/api/products/${id}`
+              )
+              .then((res) => {
+                setItems((items) => [...items, res?.data?.data]);
+                setIsLoading(false);
+              });
+          }
+        });
     };
 
     user && fetchItems();
